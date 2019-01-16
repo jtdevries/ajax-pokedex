@@ -1,23 +1,59 @@
-var name;
 
-$(document).ready(function() {
-  $('.search').click(function() {
-    var xhr = new XMLHttpRequest();
-    name = $('#name').val();
-    console.log(name);
+$(document).ready(function(){
+    $('.search').click(function(){
+      var pokeapi = 'https://pokeapi.co/api/v2/pokemon/';
+      var pokemon = $('#name').val();
+      var url = pokeapi + pokemon + '/';
 
-    xhr.open('GET', 'https://pokeapi.co/api/v2/pokemon/', true);
+      var pokeapi2 = 'https://pokeapi.co/api/v2/pokemon-species/';
+      var url2 = pokeapi2 + pokemon + '/';
 
-    xhr.onload = function() {
-      if(this.status == 200) {
-        var api = JSON.parse(this.responseText);
-        console.log(api);
-        $('.one').text('Name: ', api.name);
-        $('.two').text('ID: '+ api.id);
+      console.log(url);
+
+      $.ajax({url: url, success: function(result){
+        $.ajax({url: url2, success: function(result){
+        $('.six').text('Species: '+ result.evolves_from_species.name);
       }
-    }
+    });
+        $('h3').text('Name: '+ result.name);
+
+        $('.one').text('ID: '+ result.id)
+
+        $('.two').text('Move 1: '+ result.moves[0].move.name)
+        $('.three').text('Move 2: '+ result.moves[1].move.name)
+        $('.four').text('Move 3: '+ result.moves[2].move.name)
+        $('.five').text('Move 4: '+ result.moves[3].move.name)
+
+        $('.imgOne').attr('src', result.sprites.front_default);
+        $('.imgTwo').attr('src', result.sprites.back_default);
+        $('.imgThree').attr('src', result.sprites.front_shiny);
+        $('.imgFour').attr('src', result.sprites.back_shiny);
+      }
+    });
   });
 });
+
+
+// var name;
+//
+// $(document).ready(function() {
+//   $('.search').click(function() {
+//     var xhr = new XMLHttpRequest();
+//     name = $('#name').val();
+//     console.log(name);
+//
+//     xhr.open('GET', 'https://pokeapi.co/api/v2/pokemon/', true);
+//
+//     xhr.onload = function() {
+//       if(this.status == 200) {
+//         var api = JSON.parse(this.responseText);
+//         console.log(api);
+//         $('.one').text('Name: ', api.name);
+//         $('.two').text('ID: '+ api.id);
+//       }
+//     }
+//   });
+// });
 
 
 
