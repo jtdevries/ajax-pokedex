@@ -36,7 +36,7 @@ h2{
   border-radius: 50%;
   background-color: red;
   left: -60px
-  
+
 }
 
 
@@ -92,7 +92,7 @@ form {
   left: 450px;
 }
 
-.seven {
+.flavorText {
   position: relative;
   width: 500px;
   top: -320px;
@@ -100,7 +100,7 @@ form {
   font-size: 10px;
 }
 
-.six {
+.prevEvo {
   position: relative;
   top: -318px;
   left: 200px;
@@ -113,13 +113,13 @@ form {
   left: 80px;
 }
 
-.eight {
+.height {
   position: relative;
   top: -490px;
   left: 500px;
 }
 
-.nine {
+.weight {
   position: relative;
   top: -560px;
   left: 500px;
